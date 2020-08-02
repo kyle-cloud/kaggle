@@ -1,24 +1,33 @@
 # -*- coding:utf-8 -*-
 class Solution:
-    def __init__(self):
-        self.directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-        
-    def hasPath(self, matrix, rows, cols, path):
+    # s字符串
+    def isNumeric(self, s):
         # write code here
-        # None None singleline allthesame
-        for i in range(rows):
-            for j in range(cols):
-                if self.DFS(list(matrix), rows, cols, i, j, path):
-                     return True
-        return False
-    
-    def DFS(self, matrix, rows, cols, row, col, path):
-        #! path out of index
-        if not path: return True
-        if 0 <= row < rows and 0 <= col < cols and matrix[row*cols+col] == path[0]:
-            matrix[row*cols+col] = '0'
-            for [i, j] in self.directions:
-                if self.DFS(matrix, rows, cols, row+i, col+j, path[1:]):
-                    #print(matrix) matrix已经被改变了，数据集有问题，应该加上回溯才对
-                    return True
-        return False
+        # +/-A[.B][e|E C]
+        # +/-.B[w|E C]
+        if s == None or len(s) == 0: return False
+        
+        index = 0
+        if s[0] == '+' or s[0] == '-': 
+            index += 1
+        #A
+        index = self.scan(s, index)
+        #.B
+        if index < len(s) and s[index] == '.':
+            index += 1
+            index = self.scan(s, index)
+        #e|E C
+        if index < len(s) and (s[index] == 'E' or s[index] == 'e'):
+            index += 1
+            if index < len(s) and s[index] == '+' or s[index] == '-': 
+                index += 1
+            index = self.scan(s, index)
+        
+        return True if index == len(s) else False
+     
+    def scan(self, s, index):
+        while index < len(s):
+            if s[index] < '0' or s[index] > '9':
+                break
+            index += 1
+        return index

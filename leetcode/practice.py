@@ -1,18 +1,21 @@
 # -*- coding:utf-8 -*-
 class Solution:
-    def FirstNotRepeatingChar(self, s):
+    def FindContinuousSequence(self, tsum):
         # write code here
-        if not s: return -1
-        
-        dic = {}
-        for ch in s:
-            if ch not in dic:
-                dic[ch] = 1
-            else:
-                dic[ch] = dic[ch] + 1
-        
-        for key, value in dic.items():
-            if value == 1:
-                return s.index(key)
-        
-        return -1
+        ans = []
+        small, big = 1, 2
+        mid = tsum >> 1
+        curSum = 3
+        res = [small, big]
+        while small <= mid:
+            print(curSum, res, ans)
+            if curSum >= tsum:
+                if curSum == tsum: ans.append(res.copy())
+                curSum -= small
+                small += 1
+                res.pop(0)
+            elif curSum < tsum:
+                big += 1
+                curSum += big
+                res.append(big)
+        return ans

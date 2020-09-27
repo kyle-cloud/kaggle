@@ -1,6 +1,6 @@
 import functools
 import time
-@functools.lru_cache()
+
 
 class Solution():
     def __init__(self):
@@ -17,6 +17,7 @@ class Solution():
         self.start = [0] * 9
         self.number = [0] * 9
 
+    @functools.lru_cache(1027)
     def dfs(self, index):
         temp = self.start[:]
         for i in range(9):

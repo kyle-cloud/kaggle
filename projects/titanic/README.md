@@ -1,3 +1,19 @@
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 Baseline](#1-baseline)
+  - [1.1 load data](#11-load-data)
+  - [1.2 analise data](#12-analise-data)
+  - [1.3 process data](#13-process-data)
+  - [1.4 Build Model](#14-build-model)
+  - [1.5 Predict Data](#15-predict-data)
+- [2 Optimization 1st](#2-optimization-1st)
+- [3 Optimization 2nd](#3-optimization-2nd)
+
+<!-- /code_chunk_output -->
+
 # 1 Baseline
 
 ## 1.1 load data
@@ -37,10 +53,31 @@
 
 ## 1.4 Build Model
     1. optimize parameters: automatically select the optimal parameters using grid search
+    
     2. train model: RandomForestClassifier
+    
     3. estimate model: 10-fold cross validation -> CV Score : Mean - 0.827166 | Std - 0.0396002
+
+    4. real test score: 0.77272
 
 ## 1.5 Predict Data
 
 
-# 2 Optimization
+# 2 Optimization 1st
+    1. add new features
+        a. FamilySize -> IsAlone
+        b. Fare -> CategoricalFare
+        c. Age -> CategoricalAge
+
+    2. show the correlations of current features
+    
+    3. estimate model: 10-fold cross validation -> CV Score : Mean - 0.8384395 | Std - 0.0405893
+
+    4. real test score: 0.76794
+
+# 3 Optimization 2nd
+    1. xgboost
+    
+    2. estimate model: 10-fold cross validation -> CV Score : Mean - 0.8114357 | Std - 0.0509861
+
+    3. real test score: 0.75119

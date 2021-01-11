@@ -81,3 +81,8 @@
     2. estimate model: 10-fold cross validation -> CV Score : Mean - 0.8114357 | Std - 0.0509861
 
     3. real test score: 0.75119
+
+# 4 Optimization 3rd
+    1. Deep Neural Network
+
+    2. train on the kaggle

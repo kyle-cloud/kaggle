@@ -85,4 +85,8 @@
 # 4 Optimization 3rd
     1. Deep Neural Network
 
-    2. train on the kaggle
+    2. delete features based on correlation matrix
+
+    3. train on the kaggle
+
+    4. real test score: 0.78249

@@ -1,41 +1,19 @@
-import functools
-import time
+import numpy as np
+y = [[1, 0, 2], 
+    [1, 1, 2],
+    [1, 2, 1],
+    [-1, 3, -1],
+    [-1, 2, 1],
+    [-1, 3, 2]]
+a = [1, 0, 0]
+b = [1,1,1,1,1,1]
 
+y = np.array(y).astype(np.float)
+a = np.array(a).astype(np.float)
+b = np.array(b).astype(np.float)
+lr = 0.1
 
-class Solution():
-    def __init__(self):
-        self.dir = [[1,1,0,1,1,0,0,0,0],
-                [1,1,1,0,0,0,0,0,0],
-                [0,1,1,0,1,1,0,0,0],
-                [1,0,0,1,0,0,1,0,0],
-                [0,1,0,1,1,1,0,1,0],
-                [0,0,1,0,0,1,0,0,1],
-                [0,0,0,1,1,0,1,1,0],
-                [0,0,0,0,0,0,1,1,1],
-                [0,0,0,0,1,1,0,1,1]
-            ]
-        self.start = [0] * 9
-        self.number = [0] * 9
-
-    @functools.lru_cache(1027)
-    def dfs(self, index):
-        temp = self.start[:]
-        for i in range(9):
-            for j in range(9):
-                temp[i] = (temp[i] + self.dir[j][i] * self.number[j]) % 4
-        if sum(temp) == 0:
-            for i in range(9):
-                for j in range(self.number[i]):
-                    print("%d " % (i + 1), end="")
-            return
-        if index == 9:
-            return
-        for i in range(4):
-            self.number[index] = i
-            self.dfs(index + 1)
-
-solution = Solution()
-for i in range(0, 8, 3):
-    solution.start[i], solution.start[i + 1], solution.start[i + 2] = map(int, input().split())
-solution.dfs(0)
-print("")
+for i in range(2):
+    for j in range(len(y)):
+        a += lr * (b[j] - np.matmul(a, y[j].T)) * y[j]
+print(a)    

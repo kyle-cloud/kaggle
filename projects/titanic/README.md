@@ -60,7 +60,8 @@
 
     4. real test score: 0.77272
 
-## 1.5 Predict Data
+## 1.5 Evaluate Model
+## 1.6 Predict Data 
 
 
 # 2 Optimization 1st
@@ -80,7 +81,7 @@
     
     2. estimate model: 10-fold cross validation -> CV Score : Mean - 0.8114357 | Std - 0.0509861
 
-    3. real test score: 0.75119
+    3. real test score:     
 
 # 4 Optimization 3rd
     1. Deep Neural Network
@@ -89,4 +90,4 @@
 
     3. train on the kaggle
 
-    4. real test score: 0.78249
+    4. real test score: 0.78708
